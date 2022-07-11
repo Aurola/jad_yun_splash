@@ -1,0 +1,34 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.Aurola'
+apply plugin: 'com.kezong.fat-aar'
+
+def androidCfg = rootProject.ext.androidConfig
+def AndroidLibraries = rootProject.ext.AndroidLibraries
+def UnitTestLibraries = rootProject.ext.UnitTestLibraries
+android {
+    compileSdkVersion androidCfg.compileSdkVersion
+    buildToolsVersion androidCfg.buildToolsVersion
+    defaultConfig {
+        minSdkVersion androidCfg.minSdkVersion
+        targetSdkVersion androidCfg.targetSdkVersion
+
+        versionCode androidCfg.sdkversionCode
+        versionName androidCfg.sdkVersionName
+
+        testInstrumentationRunner UnitTestLibraries.testInstrumentationRunner
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation AndroidLibraries.appcompat
+    implementation AndroidLibraries.support
+    embed (name:'jad_yun_sdk_v1.5.7', ext:'aar')
+}

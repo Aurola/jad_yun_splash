@@ -1,9 +1,4 @@
-apply plugin: 'com.android.library'
-apply plugin: 'jacoco'
-
-jacoco {
-    toolVersion = "0.8.8" //代码覆盖库jacoco版本号
-}
+apply plugin: 'com.android.application'
 
 def androidCfg = rootProject.ext.androidConfig
 def AndroidLibraries = rootProject.ext.AndroidLibraries
@@ -22,57 +17,16 @@ android {
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner UnitTestLibraries.testInstrumentationRunner
+    }
 
-
-        ndk {
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64' // 设置支持的SO库架构
-        }
-    }
-    flavorDimensions "channel"
-    productFlavors {
-        xiaomi {
-            dimension "channel"
-        }
-        jad {
-            dimension "channel"
-        }
-    }
-    signingConfigs {
-        release {
-        }
-    }
 
     buildTypes {
-        debug {
-            testCoverageEnabled true
-        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
-
-}
-
-project.gradle.taskGraph.whenReady {
-    connectedJadDebugAndroidTest {
-        ignoreFailures = true
-    }
-}
-
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
 }
 
 dependencies {
@@ -81,19 +35,5 @@ dependencies {
     implementation AndroidLibraries.constraint
     implementation AndroidLibraries.recyclerview
     implementation ThirdLibraries.glide
-
-    testImplementation UnitTestLibraries.junit
-    androidTestImplementation UnitTestLibraries.truth
-    androidTestImplementation UnitTestLibraries.runner
-    androidTestImplementation UnitTestLibraries.mockito
-    debugImplementation UnitTestLibraries.jacoco
-
-    debugImplementation ThirdLibraries.leakcanary
-
-    //这里只做OAID 引用的方法: 将下载好的oaid  aar 放到 demo libs 目录下。具体请参看移动安全联盟
-    // 如需要请到移动安全联盟 下载 相关版本 进行OAID 获取  http://www.msa-alliance.cn/col.jsp?id=120
-
-//    implementation(name: 'oaid_sdk_1.0.23', ext: 'aar')
-//implementation(name: 'jad_yun_sdk_v1.5.7', ext: 'aar')
 }
 
