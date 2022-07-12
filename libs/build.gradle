@@ -34,10 +34,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    embed (name:'jad_yun_banner_v1.5.7', ext:'aar')
-    embed (name:'jad_yun_feed_v1.5.7', ext:'aar')
-    embed (name:'jad_yun_interstitial_v1.5.7', ext:'aar')
     embed (name:'jad_yun_splash_v1.5.7', ext:'aar')
-    embed (name:'jad_yun_native_v1.5.7', ext:'aar')
-    embed (name:'jad_yun_core_v1.5.7', ext:'aar')
 }
