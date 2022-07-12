@@ -1,2 +1,2 @@
-include ':libs'
+include ':splash'
 rootProject.name = "jad_yun_splash"
