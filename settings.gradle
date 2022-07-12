@@ -1,1 +1,3 @@
-include ':demo'
+include ':libs'
+include ':app'
+rootProject.name = "jad_android"

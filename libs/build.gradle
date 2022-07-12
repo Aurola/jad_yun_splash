@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.Aurola'
+apply plugin: 'com.kezong.fat-aar'
+
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.0"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName '1.0.0'
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'com.android.support:support-v4:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    embed (name:'jad_yun_banner_v1.5.7', ext:'aar')
+    embed (name:'jad_yun_feed_v1.5.7', ext:'aar')
+    embed (name:'jad_yun_interstitial_v1.5.7', ext:'aar')
+    embed (name:'jad_yun_splash_v1.5.7', ext:'aar')
+    embed (name:'jad_yun_native_v1.5.7', ext:'aar')
+    embed (name:'jad_yun_core_v1.5.7', ext:'aar')
+}
