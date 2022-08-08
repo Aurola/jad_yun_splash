@@ -29,5 +29,5 @@ repositories {
 }
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    embed (name:'jad_yun_splash_v1.5.7', ext:'aar')
+    embed (name:'jad_yun_splash_v2.0.0', ext:'aar')
 }
