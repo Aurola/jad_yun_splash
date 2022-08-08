@@ -1,0 +1,10 @@
+ext {
+    androidConfig = [
+            buildToolsVersion    : "30.0.3",
+            compileSdkVersion    : 29,
+            targetSdkVersion     : 28,
+            minSdkVersion        : 16,
+            sdkVersionCode       : 20220722,
+            sdkVersionName       : '2.0.1',
+    ]
+}
